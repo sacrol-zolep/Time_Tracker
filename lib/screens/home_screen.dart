@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             ),
             ListTile(
               leading:  Icon(Icons.folder, color: Colors.teal),
-              title: Text('Ptojects'),
+              title: Text('Projects'),
             ),
             ListTile(
               leading:  Icon(Icons.task, color: Colors.teal),
