@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
+import 'package:provider/provider.dart';
+import 'package:time_tracker/providers/project_provider.dart';
+import 'package:time_tracker/screens/project_management_screen.dart';
 
 import 'screens/home_screen.dart';
 
@@ -18,13 +21,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter time tracker',
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => HomeScreen(),
-      },
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => ProjectProvider(localStorage))],
+      child: MaterialApp(
+        title: 'Flutter time tracker',
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {
+          '/': (context) => HomeScreen(),
+          '/manage_projects': (context) => ProjectManagementScreen(),
+        },
+      ),
     );
   }
 }
